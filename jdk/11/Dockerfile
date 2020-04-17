@@ -7,6 +7,7 @@ ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk \
 
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories && \
     apk add --update bash curl tar wget ca-certificates zip unzip openjdk11 font-adobe-100dpi ttf-dejavu fontconfig procps git && \
+    ln -sf "$JAVA_HOME" /opt/java-home && \
     rm -rf /var/cache/apk/* && \
     rm -rf "$JAVA_HOME/man/" && \
     rm -rf "$JAVA_HOME/demo/" && \
