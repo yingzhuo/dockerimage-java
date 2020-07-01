@@ -1,7 +1,7 @@
 timestamp := $(shell /bin/date "+%F %T")
 
 no_default:
-	@echo "no defualt target"
+	@echo "no default target"
 
 github:
 	@git add .
