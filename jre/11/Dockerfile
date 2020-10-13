@@ -1,6 +1,6 @@
 FROM alpine:3.12.0
 
-LABEL MAINTAINER="应卓 <yingzhor@gmail.com>"
+LABEL maintainer="应卓 <yingzhor@gmail.com>"
 
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk \
     PATH=$PATH:/usr/lib/jvm/java-11-openjdk/jre/bin:/usr/lib/jvm/java-11-openjdk/bin
