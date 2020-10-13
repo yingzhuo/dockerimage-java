@@ -2,11 +2,17 @@ FROM alpine:3.12.0
 
 LABEL maintainer="应卓 <yingzhor@gmail.com>"
 
-ENV JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk \
-    PATH=$PATH:/usr/lib/jvm/java-1.8-openjdk/jre/bin:/usr/lib/jvm/java-1.8-openjdk/bin
-
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories && \
-    apk add --update bash curl tar wget ca-certificates zip unzip openjdk8-jre font-adobe-100dpi ttf-dejavu fontconfig procps git && \
+RUN addgroup -g 1001 -S java && \
+    adduser  -u 1001 -S java -G java && \
+    apk add --update bash ca-certificates openjdk8-jre font-adobe-100dpi ttf-dejavu fontconfig && \
+    wget "https://github.com/tianon/gosu/releases/download/1.12/gosu-amd64" -O /usr/local/bin/gosu && \
+    chmod +x /usr/local/bin/gosu && \
+    mkdir -p /var/log/ && chown java:java /var/log && \
+    mkdir -p /var/data/ && chown java:java /var/data && \
+    mkdir -p /home/java/log/ && chown java:java /home/java/log/ && \
+    mkdir -p /home/java/data/ && chown java:java /home/java/data/ && \
+    mkdir -p /home/java/config/ && chown java:java /home/java/config/ && \
+    mkdir -p /home/java/tmp/ && chown java:java /home/java/tmp/ && \
     rm -rf /var/cache/apk/* && \
     rm -rf "$JAVA_HOME/man/" && \
     rm -rf "$JAVA_HOME/demo/" && \
@@ -39,3 +45,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     rm -rf "$JAVA_HOME/jre/lib/amd64/libjfx*.so"
 
 COPY --from=yingzhuo/docktool /bin/docktool /bin/docktool
+
+WORKDIR /home/java
+
+USER root:root
