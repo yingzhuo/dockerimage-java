@@ -1,12 +1,10 @@
-FROM alpine:3.12.0
+FROM registry.cn-shanghai.aliyuncs.com/yingzhuo/alpine
 
 LABEL maintainer="应卓 <yingzhor@gmail.com>"
 
 RUN addgroup -g 1001 -S java && \
     adduser  -u 1001 -S java -G java && \
     apk add --update bash ca-certificates openjdk8-jre font-adobe-100dpi ttf-dejavu fontconfig && \
-    wget "https://github.com/tianon/gosu/releases/download/1.12/gosu-amd64" -O /usr/local/bin/gosu && \
-    chmod +x /usr/local/bin/gosu && \
     mkdir -p /var/log/ && chown java:java /var/log && \
     mkdir -p /var/data/ && chown java:java /var/data && \
     mkdir -p /home/java/log/ && chown java:java /home/java/log/ && \
@@ -44,8 +42,4 @@ RUN addgroup -g 1001 -S java && \
     rm -rf "$JAVA_HOME/jre/lib/amd64/libjavafx*.so" && \
     rm -rf "$JAVA_HOME/jre/lib/amd64/libjfx*.so"
 
-COPY --from=yingzhuo/docktool /bin/docktool /bin/docktool
-
 WORKDIR /home/java
-
-USER root:root
