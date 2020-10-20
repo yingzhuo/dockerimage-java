@@ -2,8 +2,8 @@ FROM registry.cn-shanghai.aliyuncs.com/yingzhuo/alpine
 
 LABEL maintainer="应卓 <yingzhor@gmail.com>"
 
-RUN addgroup -g 1001 -S java && \
-    adduser  -u 1001 -S java -G java && \
+RUN addgroup -g 1002 -S java && \
+    adduser  -u 1002 -S java -G java && \
     apk add --update bash ca-certificates openjdk11 font-adobe-100dpi ttf-dejavu fontconfig && \
     mkdir -p /var/log/ && chown java:java /var/log && \
     mkdir -p /var/data/ && chown java:java /var/data && \
