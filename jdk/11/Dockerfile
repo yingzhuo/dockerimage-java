@@ -2,8 +2,8 @@ FROM registry.cn-shanghai.aliyuncs.com/yingzhuo/alpine
 
 LABEL maintainer="应卓 <yingzhor@gmail.com>"
 
-ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk \
-    PATH=$PATH:$JAVA_HOME/bin
+ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+ENV PATH=$PATH:$JAVA_HOME/bin
 
 RUN addgroup -g 1002 -S java && \
     adduser  -u 1002 -S java -G java && \
@@ -14,6 +14,7 @@ RUN addgroup -g 1002 -S java && \
     mkdir -p /home/java/data/ && chown java:java /home/java/data/ && \
     mkdir -p /home/java/config/ && chown java:java /home/java/config/ && \
     mkdir -p /home/java/tmp/ && chown java:java /home/java/tmp/ && \
+    rm -rf /usr/bin/java && \
     rm -rf /var/cache/apk/* && \
     rm -rf "$JAVA_HOME/man/" && \
     rm -rf "$JAVA_HOME/demo/" && \
