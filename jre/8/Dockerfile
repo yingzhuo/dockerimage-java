@@ -2,8 +2,8 @@ FROM registry.cn-shanghai.aliyuncs.com/yingzhuo/alpine
 
 LABEL maintainer="应卓 <yingzhor@gmail.com>"
 
-ENV JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk \
-    PATH=$PATH:$JAVA_HOME/bin
+ENV JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
+ENV PATH=$PATH:$JAVA_HOME/bin
 
 RUN addgroup -g 1002 -S java && \
     adduser  -u 1002 -S java -G java && \
