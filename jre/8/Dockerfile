@@ -5,15 +5,7 @@ LABEL maintainer="应卓 <yingzhor@gmail.com>"
 ENV JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
 ENV PATH=$PATH:$JAVA_HOME/bin
 
-RUN addgroup -g 1002 -S java && \
-    adduser  -u 1002 -S java -G java && \
-    apk add --update bash ca-certificates openjdk8-jre font-adobe-100dpi ttf-dejavu fontconfig && \
-    mkdir -p /var/log/ && chown java:java /var/log && \
-    mkdir -p /var/data/ && chown java:java /var/data && \
-    mkdir -p /home/java/log/ && chown java:java /home/java/log/ && \
-    mkdir -p /home/java/data/ && chown java:java /home/java/data/ && \
-    mkdir -p /home/java/config/ && chown java:java /home/java/config/ && \
-    mkdir -p /home/java/tmp/ && chown java:java /home/java/tmp/ && \
+RUN apk add --update bash ca-certificates openjdk8-jre font-adobe-100dpi ttf-dejavu fontconfig && \
     rm -rf /usr/bin/java && \
     rm -rf /var/cache/apk/* && \
     rm -rf "$JAVA_HOME/man/" && \
@@ -46,4 +38,4 @@ RUN addgroup -g 1002 -S java && \
     rm -rf "$JAVA_HOME/jre/lib/amd64/libjavafx*.so" && \
     rm -rf "$JAVA_HOME/jre/lib/amd64/libjfx*.so"
 
-WORKDIR /home/java
+WORKDIR /home/app
