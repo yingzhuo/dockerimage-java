@@ -1,4 +1,4 @@
-FROM registry.cn-shanghai.aliyuncs.com/yingzhuo/alpine
+FROM registry.cn-shanghai.aliyuncs.com/yingzhuo/alpine:3
 
 LABEL maintainer="应卓 <yingzhor@gmail.com>"
 
@@ -38,4 +38,4 @@ RUN apk add --update bash ca-certificates openjdk11 font-adobe-100dpi ttf-dejavu
     rm -rf "$JAVA_HOME/jre/lib/amd64/libjavafx*.so" && \
     rm -rf "$JAVA_HOME/jre/lib/amd64/libjfx*.so"
 
-WORKDIR /home/app
+WORKDIR /root
