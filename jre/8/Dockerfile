@@ -1,4 +1,4 @@
-FROM registry.cn-shanghai.aliyuncs.com/yingzhuo/alpine:3
+FROM registry.cn-shanghai.aliyuncs.com/yingzhuo/alpine
 
 LABEL maintainer="应卓 <yingzhor@gmail.com>"
 
